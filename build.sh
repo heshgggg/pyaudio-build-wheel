@@ -5,10 +5,8 @@ set -ex
 # The version should be set automatically by the calling GitHub Actions code
 python --version
 
-command -v curl || true
-
 # Build and install PortAudio
-wget -nv https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.zip
+curl -sSO https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.zip
 unzip -q v19.7.0.zip
 (
     cd portaudio-19.7.0
