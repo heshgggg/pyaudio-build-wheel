@@ -18,7 +18,10 @@ unzip -q v19.7.0.zip
 (
     cd portaudio-19.7.0
     # We may only want the winapi flag when compiling on Windows
-    ./configure --with-winapi=wasapi --enable-static=yes --enable-shared=no
+    # Force full path of gcc and g++
+    ./configure \
+        --with-winapi=wasapi --enable-static=yes --enable-shared=no \
+        CC="$(command -v gcc)" CXX="$(command -v g++)"
     make
     sudo make install
 )
@@ -26,6 +29,7 @@ unzip -q v19.7.0.zip
 # Build wheel
 git clone https://people.csail.mit.edu/hubert/git/pyaudio.git
 cd pyaudio
+# We might need to pass -cmingw32 flag here
 python setup.py bdist_wheel --static-link
 test -d dist
 ls -la
