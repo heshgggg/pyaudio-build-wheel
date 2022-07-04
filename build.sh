@@ -8,6 +8,10 @@ python --version
 # Check what python detects for sys.platform
 python -c 'import sys; print(sys.platform)'
 
+command -v gcc
+command -v g++
+command -v make
+
 # Build and install PortAudio
 curl -sSLO https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.zip
 unzip -q v19.7.0.zip
