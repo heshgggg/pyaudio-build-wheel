@@ -5,6 +5,9 @@ set -ex
 # The version should be set automatically by the calling GitHub Actions code
 python --version
 
+# Check what python detects for sys.platform
+python -c 'import sys; print(sys.platform)'
+
 # Build and install PortAudio
 curl -sSLO https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.zip
 unzip -q v19.7.0.zip
