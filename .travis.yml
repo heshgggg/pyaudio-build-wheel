@@ -1,0 +1,13 @@
+language: python
+
+matrix:
+  include:
+    - name: Python 3.7 Linux build
+      stage: build
+      os: linux
+      before_install:
+        - sudo apt -y install build-essential
+      script:
+        - sh build.sh
+      after_success:
+        - echo 'Build successful'
