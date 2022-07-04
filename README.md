@@ -8,3 +8,5 @@ This repo only contains code for building unofficial wheels from the publicly
 available PyAudio source code.
 
 This is currently a work in progress.
+
+The GitHub Actions workflow is defined in `.github/workflows/main.yml`.

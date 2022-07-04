@@ -6,7 +6,7 @@ set -ex
 python --version
 
 # Build and install PortAudio
-wget https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.zip
+wget -nv https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.zip
 unzip -q v19.7.0.zip
 (
     cd portaudio-19.7.0
