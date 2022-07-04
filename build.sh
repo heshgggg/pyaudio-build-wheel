@@ -10,7 +10,8 @@ curl -sSLO https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.zip
 unzip -q v19.7.0.zip
 (
     cd portaudio-19.7.0
-    ./configure
+    # We may only want the winapi flag when compiling on Windows
+    ./configure --with-winapi=wasapi --enable-static=yes --enable-shared=no
     make
     sudo make install
 )
@@ -18,7 +19,7 @@ unzip -q v19.7.0.zip
 # Build wheel
 git clone https://people.csail.mit.edu/hubert/git/pyaudio.git
 cd pyaudio
-python setup.py bdist_wheel
+python setup.py bdist_wheel --static-link
 test -d dist
 ls -la
 ls -la dist
