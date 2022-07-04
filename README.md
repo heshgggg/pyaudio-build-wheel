@@ -10,3 +10,5 @@ available PyAudio source code.
 This is currently a work in progress.
 
 The GitHub Actions workflow is defined in `.github/workflows/main.yml`.
+
+Builds can be found under the **Actions** tab for the GitHub repo.
