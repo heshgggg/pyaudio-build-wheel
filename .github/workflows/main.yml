@@ -1,6 +1,26 @@
 name: Python package
 
-on: [push]
+on: [push, pull_request]
+
+# TODO What I need to do is grab the portaudio build code from
+# https://github.com/PortAudio/portaudio/blob/master/.github/workflows/cmake.yml,
+# modify that to build and install portaudio in a separate directory, and then
+# build a wheel for each python version. (Though even then, I can't be sure
+# how well Windows will find the libs and headers after a cmake install.)
+#
+# Though if I can find out where the files are installed by cmake install, then
+# the better approach is to just pull master build artifacts for the portaudio
+# repo, and then just copy those files to wherever they usually install to.
+# This only really works though if I can always grab a latest successful
+# master branch artifact, as the GitHub Action artifacts are auto-deleted after
+# a certain period of days. Maybe I can get the latest master build artifact
+# using the GitHub REST API?
+#
+# Also, since python 3.7 - 3.10 are all installed on ubuntu-latest and windows-latest,
+# I can cut down on the number of jobs if I just ran each wheel build in serial.
+# This will increase the time a human needs to wait for the builds to be done,
+# but it will decrease the runner-time (since there will not need to be 4 runners
+# running in parallel).
 
 jobs:
   build:
@@ -9,8 +29,6 @@ jobs:
       matrix:
         # platform: [ubuntu-latest, windows-latest]
         platform: [windows-latest]
-        # python-version: ["3.7", "3.8", "3.9", "3.10"]
-        python-version: ["3.9"]
     runs-on: ${{ matrix.platform }}
 
     steps:
