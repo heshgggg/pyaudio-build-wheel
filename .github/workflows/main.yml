@@ -1,7 +1,7 @@
 name: Python package
 
 on: [push, pull_request]
-
+  workflow_dispatch:
 # TODO What I need to do is grab the portaudio build code from
 # https://github.com/PortAudio/portaudio/blob/master/.github/workflows/cmake.yml,
 # modify that to build and install portaudio in a separate directory, and then
